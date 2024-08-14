@@ -8,10 +8,13 @@ this_dir=pathlib.Path(__file__).resolve().parent
 
 #  views: functions that render HTML and handle the logic behind it
 
-def home_page_view(request, *args, **kwargs):    
-    queryset=PageVisit.objects.all()     
-    queryset_currPage=PageVisit.objects.filter(path=request.path)           
-    my_context={
+def home_view(request, *args, **kwargs):    
+     return about_view(request, *args, **kwargs)     
+
+def about_view(request, *args, **kwargs):
+        queryset=PageVisit.objects.all()     
+        queryset_currPage=PageVisit.objects.filter(path=request.path)           
+        my_context={
         "page_title": "FutureSex/LoveSounds",
         "page_content": "Lovestoned/I think that she knows",
         "Total_page_visits":queryset.count(),
@@ -19,9 +22,9 @@ def home_page_view(request, *args, **kwargs):
         "percent" : queryset_currPage.count() *100.0 / queryset.count(),        
         }  
     
-    PageVisit.objects.create(path=request.path)     #fields: path, timestamp
-    html_template= "home.html"        
-    return render(request, html_template, my_context)
+        PageVisit.objects.create(path=request.path)     #fields: path, timestamp
+        html_template= "home.html"        
+        return render(request, html_template, my_context)
 
 def my_old_home_page_view(request, *args, **kwargs):    
     my_title="FutureSex/LoveSounds"
