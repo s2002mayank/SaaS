@@ -14,12 +14,16 @@ def home_view(request, *args, **kwargs):
 def about_view(request, *args, **kwargs):
         queryset=PageVisit.objects.all()     
         queryset_currPage=PageVisit.objects.filter(path=request.path)           
+        try:
+            percent=queryset_currPage.count() *100.0 / queryset.count()
+        except:
+            percent=0
         my_context={
         "page_title": "FutureSex/LoveSounds",
         "page_content": "Lovestoned/I think that she knows",
         "Total_page_visits":queryset.count(),
         "current_page_visits" :queryset_currPage.count(),
-        "percent" : queryset_currPage.count() *100.0 / queryset.count(),        
+        "percent" : percent,        
         }  
     
         PageVisit.objects.create(path=request.path)     #fields: path, timestamp
