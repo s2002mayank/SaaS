@@ -1,0 +1,7 @@
+<div>
+    {% if request.user.is_authenticated%}        
+        <p>"Welcome! This is homepage. user is authenticated."</p>        
+    {% else %}        
+        <p>WARNING! unauthorized access.</p>
+    {% endif %}        
+</div>
