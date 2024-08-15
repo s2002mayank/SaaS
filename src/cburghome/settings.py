@@ -27,7 +27,7 @@ DEBUG = True
 
 # until now local host is run. to deploy it, change allowed_hosts
 ALLOWED_HOSTS = [
-    ".render.com"
+    "saas-django-tut.onrender.com"
 ]
 
 if DEBUG:
