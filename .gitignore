@@ -1,5 +1,9 @@
 # https://github.com/github/gitignore/blob/main/Python.gitignore
 
+#ignore vendor files
+src\staticfiles\vendors
+
+#ignore virtual environment files and dependencies
 venv/
 
 # Byte-compiled / optimized / DLL files
