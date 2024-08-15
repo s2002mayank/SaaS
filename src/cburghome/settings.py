@@ -27,7 +27,7 @@ DEBUG = True
 
 # until now local host is run. to deploy it, change allowed_hosts
 ALLOWED_HOSTS = [
-    ".railway.app" #https://SaaS.prod.railway.app
+    ".render.com"
 ]
 
 if DEBUG:
