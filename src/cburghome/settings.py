@@ -21,13 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("DJANGO_SECRET_KEY", default=None)
-print("SECRET_KEY: ", SECRET_KEY)
+# print("SECRET_KEY: ", SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # DEBUG= str(os.environ.get("DJANGO_DEBUG")).lower()=="true"
 DEBUG=config("DJANGO_DEBUG", cast=bool)
-print("DEBUG: ", DEBUG, type(DEBUG))
+# print("DEBUG: ", DEBUG, type(DEBUG))
 
 # until now local host is run. to deploy it, change allowed_hosts
 ALLOWED_HOSTS = [
@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # plural names
     # my-apps
-    'visits'
+    'visits',
+    'commando'
 ]
 
 MIDDLEWARE = [
@@ -149,6 +150,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_BASE_DIR= BASE_DIR/ "staticfiles"
+STATICFILES_BASE_DIR.mkdir(exist_ok=True, parents=True)
+STATICFILES_VENDOR_DIR= STATICFILES_BASE_DIR/ "vendors"
+
+# source(s) for python manage.py collectstatic
+STATICFILES_DIRS=[
+    STATICFILES_BASE_DIR
+]
+
+# output for for python manage.py collectstatic
+# local-cdn -> prod-cdn
+STATIC_ROOT= BASE_DIR/ "local-cdn"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -1,7 +1,11 @@
 # https://github.com/github/gitignore/blob/main/Python.gitignore
 
+#ignore local static files root
+#or local-cdn
+**/local-cdn/
+
 #ignore vendor files
-src\staticfiles\vendors
+src/staticfiles/vendors/
 
 #ignore virtual environment files and dependencies
 venv/
