@@ -1,10 +1,13 @@
-# used for CI-CD pipeline (continous integration and development)
+# used for CI-CD pipeline (continous integration and deployment/delivery)
 # but we are using it to schedule operations
 
 name: 1-Hello-World-Github-actions
 
 # trigger 
 on:
+  workflow-dispatch:
+  schedule:
+    -cron: '30 15 * * *'
   push: #git push
     branch:
       - main
