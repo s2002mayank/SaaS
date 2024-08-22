@@ -7,7 +7,7 @@ name: 1-Hello-World-Github-actions
 on:
   workflow_dispatch:
   schedule:
-    -cron: '30 15 * * *'
+    - cron: '30 15 * * *'
   push: #git push
     branch:
       - main
@@ -16,6 +16,6 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      -name: hello there
+      - name: hello there
       run: echo "hello"
 
