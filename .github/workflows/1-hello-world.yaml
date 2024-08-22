@@ -1,0 +1,18 @@
+# used for CI-CD pipeline (continous integration and development)
+# but we are using it to schedule operations
+
+name: 1-Hello-World-Github-actions
+
+# trigger 
+on:
+  push: #git push
+    branch:
+      - main
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      -name: hello there
+      run: echo "hello"
+
