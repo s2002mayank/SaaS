@@ -15,7 +15,7 @@ class Command(BaseCommand):
             # python manage.py sync_user_subs --clear_dangling
             # print(options) 
             # options has "clear_dangling" set to False 
-            day_start=options.get("day-start") 
+            day_start=options.get("day_start") 
             day_end=options.get("day_end") 
             days_ago=options.get("days_ago") 
             days_left=options.get("days_left")
@@ -23,13 +23,16 @@ class Command(BaseCommand):
             if clear_dangling:
                 # clear dangling not in use active subs in stripe
                 sub_utils.clear_dangling_subscriptions()
+                self.stdout.write(
+                    self.style.SUCCESS("Removed all Dangling subs")
+                )                
             else:
                 # sync active subs
-                sub_utils.refresh_active_users_subscriptions(days_ago=days_ago, days_left=days_left,active_only=True)
-            self.stdout.write(
-                self.style.SUCCESS("Removed all Dangling subs")
-            )                
+                sub_utils.refresh_active_users_subscriptions(days_ago=days_ago, days_left=days_left,active_only=True)            
+                self.stdout.write(
+                    self.style.SUCCESS("Refreshed userSubscription model")
+                )                
         except:
             self.stdout.write(
-                self.style.WARNING("Dangling subs still exist...")
+                self.style.WARNING("ERROR!")
             )
