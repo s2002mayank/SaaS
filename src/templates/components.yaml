@@ -1,0 +1,5 @@
+components:
+  card: "myapp/card.html"
+  button: "myapp/button.html"
+  icon: "myapp/icon.html"
+  icon_button: "myapp/icon_button.html"

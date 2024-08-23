@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Homepage -{{block.super}}
+{% endblock title %}
+
+{% block content %}       
+    <h1 class="text-lg font-medium">payment successful!</h1>
+    
+    <div>
+        {% for k,v in checkout.items%}        
+            <p>{{k}} : {{v}}</p>
+        {% endfor %}
+    </div>
+      
+{% endblock content %}

@@ -49,8 +49,10 @@ SECRET_KEY = config("DJANGO_SECRET_KEY", default=None)
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # DEBUG= str(os.environ.get("DJANGO_DEBUG")).lower()=="true"
-DEBUG=config("DJANGO_DEBUG", cast=bool)
+DEBUG=config("DJANGO_DEBUG", default=False, cast=bool)
 # print("DEBUG: ", DEBUG, type(DEBUG))
+
+BASE_URL=config("BASE_URL", default=None, cast=str)
 
 # until now local host is run. to deploy it, change allowed_hosts
 ALLOWED_HOSTS = [
@@ -77,8 +79,23 @@ INSTALLED_APPS = [
     # plural names
     # my-apps
     'visits',
-    'commando',    
+    'profiles',
+    'subscriptions',
+    'customers',    
+    'commando',        
+    #third-party apps
+    'allauth_ui',
+    'allauth',
+    'allauth.account',        
+    'allauth.socialaccount', 
+    'allauth.socialaccount.providers.github',
+    'widget_tweaks',
+    'slippers'
 ]
+
+# ?: (slippers.E001) Slippers was unable to find a components.yaml file.
+#         HINT: Make sure it's in a root template directory.
+# refer  https://mitchel.me/slippers/docs/registering-components/
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,6 +105,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    #  Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -157,6 +176,32 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# django all-auth-ui config
+# light, winter, retro, business, corporate --good ones
+ALLAUTH_UI_THEME = "corporate"
+
+# django all-auth config
+LOGIN_REDIRECT_URL='/'
+ACCOUNT_AUTHENTICATION_METHOD="username_email"
+ACCOUNT_EMAIL_VERIFICATION="mandatory"
+ACCOUNT_EMAIL_SUBJECT_PREFIX=" [SaaS] "
+ACCOUNT_EMAIL_REQUIRED=True
+AUTHENTICATION_BACKENDS = [    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+# Provider specific settings
+# social authentication
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {        
+        "VERIFIED_EMAIL": True
+    }
+}
 
 
 # Internationalization
