@@ -56,7 +56,7 @@ BASE_URL=config("BASE_URL", default=None, cast=str)
 
 # until now local host is run. to deploy it, change allowed_hosts
 ALLOWED_HOSTS = [
-    "saas-django-tut.onrender.com"
+    "saas-vsor.onrender.com",
 ]
 
 if DEBUG:
