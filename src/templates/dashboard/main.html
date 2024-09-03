@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Homepage -{{block.super}}
+{% endblock title %}
+
+{% block content %}                   
+    {% include 'dashboard/nav/navbar.html' %}
+    {% include 'dashboard/main/hero.html' %}
+    {% include 'dashboard/main/footer.html'%}
+{% endblock content %}

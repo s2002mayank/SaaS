@@ -5,13 +5,16 @@ from django.conf import settings
 from django.urls import reverse
 from django.http import HttpResponse
 from visits.models import PageVisit
-
 import pathlib
 
 this_dir=pathlib.Path(__file__).resolve().parent
 LOGIN_URL=settings.LOGIN_URL
 
 #  views: functions that render HTML and handle the logic behind it
+
+def helper_view(request, *args, **kwargs):
+     return render(request, "helper/helper.html", {})
+     
 
 @login_required 
 def user_detail_view(request, *args, **kwargs):
@@ -22,9 +25,7 @@ def user_detail_view(request, *args, **kwargs):
     return render(request, "home.html", context)
 
 def home_view(request, *args, **kwargs):    
-    if(request.user.is_authenticated):
-        return about_view(request, *args, **kwargs)     
-    return redirect(reverse('account_login'))
+     return redirect('home_page')
 
 def about_view(request, *args, **kwargs):
         user=request.user

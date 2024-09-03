@@ -12,51 +12,55 @@
             SaaS application
             {% endblock head_title %}
         </title>
-        {% include 'base/css.html'%}
         {% block extra_head %}
-            <link rel="stylesheet" href="{% static 'allauth_ui/output.css' %}">            
+            <link rel="stylesheet" href="{% static 'allauth_ui/output.css' %}">
         {% endblock extra_head %}
         {% include 'base/css.html'%}
     </head>
     <body class="min-h-screen bg-base-300">
         {% block body %}
-        {% include 'nav/navbar.html'%}
-            {% include 'base/django-flash-messages.html' with messages=messages %}
+        {% include 'dashboard/nav/navbar.html' %}
+        
+        <!-- Main Content with Padding to Prevent Overlap -->
+        <main class="flex flex-col items-center justify-center py-6 px-4 sm:px-6 lg:px-8 pt-16 min-h-screen">
             {% block content %}
             {% endblock content %}
-            <div class="mx-auto [&_a]:link text-sm flex flex-col md:flex-row items-center justify-center gap-3 mt-3">
+            
+            <div class="mx-auto text-sm flex flex-col md:flex-row items-center justify-center gap-3 mt-6">
                 {% if user.is_authenticated %}
                     {% url 'account_email' as email_url %}
                     {% if email_url %}
-                        <a href="{{ email_url }}">{% trans "Change Email" %}</a>
+                        <a href="{{ email_url }}" class="text-blue-600 hover:text-blue-700">{% trans "Change Email" %}</a>
                     {% endif %}
                     {% url 'account_change_password' as change_password_url %}
                     {% if change_password_url %}
-                        <a href="{{ change_password_url }}">{% trans "Change Password" %}</a>
+                        <a href="{{ change_password_url }}" class="text-blue-600 hover:text-blue-700">{% trans "Change Password" %}</a>
                     {% endif %}
                     {% url 'mfa_index' as mfa_url %}
                     {% if mfa_url %}
-                        <a href="{{ mfa_url }}">{% trans "Two-Factor Authentication" %}</a>
+                        <a href="{{ mfa_url }}" class="text-blue-600 hover:text-blue-700">{% trans "Two-Factor Authentication" %}</a>
                     {% endif %}
                     {% url 'usersessions_list' as usersessions_list_url %}
                     {% if usersessions_list_url %}
-                        <a href="{{ usersessions_list_url }}">{% trans "Sessions" %}</a>
+                        <a href="{{ usersessions_list_url }}" class="text-blue-600 hover:text-blue-700">{% trans "Sessions" %}</a>
                     {% endif %}
                     {% url 'account_logout' as logout_url %}
                     {% if logout_url %}
-                        <a href="{{ logout_url }}">{% trans "Sign Out" %}</a>
+                        <a href="{{ logout_url }}" class="text-blue-600 hover:text-blue-700">{% trans "Sign Out" %}</a>
                     {% endif %}
                 {% else %}
                     {% url 'account_login' as login_url %}
                     {% if login_url %}
-                        <a href="{{ login_url }}">{% trans "Sign In" %}</a>
+                        <a href="{{ login_url }}" class="text-blue-600 hover:text-blue-700">{% trans "Sign In" %}</a>
                     {% endif %}
                     {% url 'account_signup' as signup_url %}
                     {% if signup_url %}
-                        <a href="{{ signup_url }}">{% trans "Sign Up" %}</a>
+                        <a href="{{ signup_url }}" class="text-blue-600 hover:text-blue-700">{% trans "Sign Up" %}</a>
                     {% endif %}
                 {% endif %}
             </div>
+        </main>
+        
         {% endblock body %}
         {% block extra_body %}
         {% endblock extra_body %}

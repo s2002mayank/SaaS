@@ -18,14 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from checkouts import views as checkout_views
 from subscriptions.views import (subscription_pricing_view, user_subscription_view, user_subscription_cancel_view)
-# from .views import (home_view)
+from .views import (home_view, helper_view)
 
 
 # urls: route traffic to views
 # path('url_name', view)            
-urlpatterns = [        
+urlpatterns = [       
+    # helper
+    path("helper/", helper_view,name="helper"),
     # homepage
-    path('', name="home"), # Home page
+    path('', home_view,name="home"), # Home page    
+    path('dashboard/', include('dashboard.urls')),
 
     # authentication
     path('accounts/', include('allauth.urls')), # django all-auth uses this

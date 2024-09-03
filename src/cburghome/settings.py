@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     # my-apps
     'visits',
     'profiles',
+    'dashboard',
     'subscriptions',
     'customers',    
     'commando',        
