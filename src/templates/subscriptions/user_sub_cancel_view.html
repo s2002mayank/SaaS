@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    subscription billing -{{block.super}}
+{% endblock title %}
+
+{% block content %}    
+    {% if user_sub_obj.is_active_status %}                
+        <h1 class="text-lg font-medium">Are you sure you want to Cancel?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Yes, cancel!</button>                
+        </form>                
+    {% else %}
+        <h1 class="text-lg font-medium">You do not have access to any plan. Kindly contact admin</h1>
+    {% endif %}
+{% endblock content %}

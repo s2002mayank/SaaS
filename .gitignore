@@ -1,5 +1,17 @@
 # https://github.com/github/gitignore/blob/main/Python.gitignore
 
+
+src/templates/protected/
+src/auth/
+
+#ignore local static files root
+#or local-cdn
+**/local-cdn/
+
+#ignore vendor files
+src/staticfiles/vendors/
+
+#ignore virtual environment files and dependencies
 venv/
 
 # Byte-compiled / optimized / DLL files

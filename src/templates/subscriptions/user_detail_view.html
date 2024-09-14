@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    subscription billing -{{block.super}}
+{% endblock title %}
+
+{% block content %}       
+    <h1 class="text-lg font-medium">Subscription Billing</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Refresh</button>                
+    </form>    
+    <a href="{{ user_sub_obj.get_cancel_url }}">Cancel Membership</a>
+    {% for k,v in subscription.items %}        
+    <p>{{k}} : {{v}}</p>        
+    {% endfor %}    
+    <small><strong>{{ subscription.Current_period_end | timeuntil}} left</strong></small>    
+{% endblock content %}

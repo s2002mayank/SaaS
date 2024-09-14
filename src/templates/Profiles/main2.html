@@ -1,0 +1,126 @@
+<section class="container mx-auto px-6 py-12 pt-24">
+    <!-- Profile Header -->
+    <div class="flex items-center justify-between mb-8">
+      <div class="flex items-center">
+        <img src="profile-picture.jpg" alt="Profile Picture" class="w-24 h-24 rounded-full border-2 border-blue-500">
+        <div class="ml-6">
+          <h2 class="text-3xl font-semibold">John Doe</h2>
+          <p class="text-gray-600">john.doe@example.com</p>
+          <button class="text-blue-500 mt-2 hover:underline">Change Profile Picture</button>
+        </div>
+      </div>
+      <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Edit Profile</button>
+    </div>
+  
+    <!-- Profile Sections -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Account Information -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <h3 class="text-xl font-semibold mb-4">Account Information</h3>
+        <ul class="text-gray-700">
+          <li class="mb-2"><strong>Full Name:</strong> John Doe</li>
+          <li class="mb-2"><strong>Email:</strong> john.doe@example.com</li>
+          <li class="mb-2"><strong>Phone Number:</strong> +1 (234) 567-890</li>
+          <li><strong>Password:</strong> •••••••• <a href="#change-password" class="text-blue-500 hover:underline">Change Password</a></li>
+        </ul>
+      </div>
+  
+      <!-- Subscription Details -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <h3 class="text-xl font-semibold mb-4">Subscription Details</h3>
+        <ul class="text-gray-700">
+          <li class="mb-2"><strong>Plan:</strong> Premium</li>
+          <li class="mb-2"><strong>Next Billing Date:</strong> August 30, 2024</li>
+          <li class="mb-2"><strong>Billing Cycle:</strong> Monthly</li>
+          <li><a href="#upgrade" class="text-blue-500 hover:underline">Upgrade Plan</a></li>
+        </ul>
+        <div class="mt-4">
+          <h4 class="text-lg font-semibold mb-2">Billing History</h4>
+          <ul class="text-gray-700">
+            <li class="mb-2">Invoice #1234 - $59.99 - July 30, 2024</li>
+            <li class="mb-2">Invoice #1233 - $59.99 - June 30, 2024</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Security Settings -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <h3 class="text-xl font-semibold mb-4">Security Settings</h3>
+        <ul class="text-gray-700">
+          <li class="mb-2"><strong>Password:</strong> •••••••• <a href="#change-password" class="text-blue-500 hover:underline">Change Password</a></li>
+          <li class="mb-2"><strong>Two-Factor Authentication:</strong> Enabled</li>
+          <li><a href="#manage-sessions" class="text-blue-500 hover:underline">Manage Active Sessions</a></li>
+        </ul>
+      </div>
+  
+      <!-- Notification Preferences -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <h3 class="text-xl font-semibold mb-4">Notification Preferences</h3>
+        <ul class="text-gray-700">
+          <li class="flex justify-between mb-2">
+            <span>Email Notifications</span>
+            <input type="checkbox" class="toggle-checkbox">
+          </li>
+          <li class="flex justify-between mb-2">
+            <span>SMS Notifications</span>
+            <input type="checkbox" class="toggle-checkbox">
+          </li>
+          <li class="flex justify-between">
+            <span>In-App Notifications</span>
+            <input type="checkbox" class="toggle-checkbox">
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Billing Information -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <h3 class="text-xl font-semibold mb-4">Billing Information</h3>
+        <ul class="text-gray-700">
+          <li class="mb-2"><strong>Payment Method:</strong> Visa ending in 1234</li>
+          <li><a href="#update-billing" class="text-blue-500 hover:underline">Update Billing Details</a></li>
+        </ul>
+      </div>
+  
+      <!-- User Activity -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <h3 class="text-xl font-semibold mb-4">Recent Activity</h3>
+        <ul class="text-gray-700">
+          <li class="mb-2">Logged in from Chrome on Windows - August 20, 2024</li>
+          <li class="mb-2">Changed password - August 18, 2024</li>
+          <li class="mb-2">Updated profile picture - August 15, 2024</li>
+        </ul>
+      </div>
+  
+      <!-- Connected Accounts -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <h3 class="text-xl font-semibold mb-4">Connected Accounts</h3>
+        <ul class="text-gray-700">
+          <li class="mb-2"><strong>Google:</strong> Connected</li>
+          <li class="mb-2"><strong>Facebook:</strong> Not Connected</li>
+          <li><a href="#manage-connections" class="text-blue-500 hover:underline">Manage Connections</a></li>
+        </ul>
+      </div>
+  
+      <!-- Preferences -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <h3 class="text-xl font-semibold mb-4">Preferences</h3>
+        <ul class="text-gray-700">
+          <li class="mb-2"><strong>Language:</strong> English (US)</li>
+          <li class="mb-2"><strong>Timezone:</strong> GMT -5:00</li>
+          <li><a href="#edit-preferences" class="text-blue-500 hover:underline">Edit Preferences</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Save Changes Button -->
+    <div class="flex justify-end mt-8">
+      <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Save Changes</button>
+    </div>
+  
+    <!-- Account Actions -->
+    <div class="mt-12 text-center">
+      <button class="text-red-500 hover:underline">Deactivate Account</button>
+      <p class="text-gray-600 mt-2">*This action cannot be undone</p>
+    </div>
+  </section>
+  
