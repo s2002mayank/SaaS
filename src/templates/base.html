@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}SaaS, coming soon!{% endblock title %}</title>    
+        <title>{% block title %}SaaS Wrapper{% endblock title %}</title>    
     {% include 'base/css.html'%}
 </head>
 <body>
-    {% include 'dashboard/nav/navbar2.html'%}
+    {% include 'dashboard/nav/navbar.html'%}
     {% include 'base/django-flash-messages.html' with messages=messages %}
     {% block content %}
     <p>--base template</p>
