@@ -20,6 +20,7 @@
             <a href="{% url 'account_login' %}" class="text-gray-600 hover:text-gray-900">Login</a>
             <a href="{% url 'account_signup' %}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-blue-600">Get Started</a>
         {% else %}
+        <a href="{% url 'account_logout' %}" class="text-gray-600 hover:text-gray-900">Logout</a>
         <a href="{% url 'profile_view' request.user.username %}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-blue-600">Account</a>
         {% endif %}            
 
