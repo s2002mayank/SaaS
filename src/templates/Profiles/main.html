@@ -1,55 +1,64 @@
-<section class="container mx-auto px-6 py-12 pt-24">
+{% extends 'base.html' %}
 
-    <!-- Profile Header -->
-    <div class="flex items-center justify-between mb-8">
-      <div class="flex items-center">
-        <img src="profile-picture.jpg" alt="#" class="w-20 h-20 rounded-full border-2 border-blue-500">
-        <div class="ml-4">
-          <h2 class="text-2xl font-semibold">John Doe</h2>
-          <p class="text-gray-600">john.doe@example.com</p>
-        </div>
-      </div>
-      <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Edit Profile</button>
-    </div>
+{% block title %}
+    {{ user.username }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}                       
+<section class="container mx-auto px-6 py-12 pt-24">
   
-    <!-- Profile Sections -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Account Information -->
-      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <h3 class="text-xl font-semibold mb-4">Account Information</h3>
-        <ul class="text-gray-700">
-          <li class="mb-2">Full Name: John Doe</li>
-          <li class="mb-2">Email: john.doe@example.com</li>
-          <li class="mb-2">Password: ••••••••</li>
-          <li>Phone Number: +1 (234) 567-890</li>
-        </ul>
-      </div>
-  
-      <!-- Subscription Details -->
-      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <h3 class="text-xl font-semibold mb-4">Subscription Details</h3>
-        <ul class="text-gray-700">
-          <li class="mb-2">Plan: Premium</li>
-          <li class="mb-2">Next Billing Date: August 30, 2024</li>
-          <li class="mb-2">Billing Cycle: Monthly</li>
-          <li><a href="#upgrade" class="text-blue-500 hover:underline">Upgrade Plan</a></li>
-        </ul>
-      </div>
-  
-      <!-- Security Settings -->
-      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <h3 class="text-xl font-semibold mb-4">Security Settings</h3>
-        <ul class="text-gray-700">
-          <li class="mb-2">Password: ••••••••</li>
-          <li class="mb-2">Two-Factor Authentication: Enabled</li>
-          <li><a href="#change-password" class="text-blue-500 hover:underline">Change Password</a></li>
-        </ul>
+  <!-- Profile Header -->
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center">
+      <!-- <img src="{{ user.profile.profile_picture.url }}" class="w-20 h-20 rounded-full border-2 border-blue-500"> Assuming profile_picture is a field in the User's profile -->
+      <div class="ml-4">
+        <h2 class="text-2xl font-semibold"> {{ user.get_full_name|default:user.username }}</h2>
+        <p class="text-gray-600"> {{ user.email }}</p>
       </div>
     </div>
-  
-    <!-- Save Changes Button -->
-    <div class="flex justify-end mt-8">
-      <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Save Changes</button>
+    <a href="{% url 'user_subscription' %}"><button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Billing details</button></a>
+  </div>
+    
+  <!-- Profile Sections -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Account Information -->
+    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+      <h3 class="text-xl font-semibold mb-4">Account Information</h3>
+      <ul class="text-gray-700">
+        <li class="mb-2">Full Name: {{ user.get_full_name|default:user.username }}</li>
+        <li class="mb-2">Email: {{ user.email }}</li>
+        <li class="mb-2">Password: **********</li>
+        <li>Phone Number: {{ user.profile.phone_number|default:'Not provided' }}</li> 
+      </ul>
     </div>
-  </section>
+      
+    <!-- Subscription Details -->
+    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+      <h3 class="text-xl font-semibold mb-4">Subscription Details</h3>
+      <ul class="text-gray-700">
+        <li class="mb-2">Plan: {{ user.profile.subscription_plan|default:'Basic' }}</li> 
+        <li class="mb-2">Next Billing Date: {{ user.profile.next_billing_date|date:"F j, Y" }}</li>
+        <li class="mb-2">Billing Cycle: {{ user.profile.billing_cycle|default:'Monthly' }}</li> 
+        <li><a href="{% url 'pricing' %}" class="text-blue-500 hover:underline">Upgrade Plan</a></li>
+      </ul>
+    </div>
+      
+    <!-- Security Settings -->
+    <!-- <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+      <h3 class="text-xl font-semibold mb-4">Security Settings</h3>
+      <ul class="text-gray-700">
+        <li class="mb-2">Password: ••••••••</li>
+        <li class="mb-2">Two-Factor Authentication: {{ user.profile.two_factor_auth|yesno:"Enabled,Disabled" }}</li> 
+        <li><a href="#change-password" class="text-blue-500 hover:underline">Change Password</a></li>
+      </ul>
+    </div> -->
+  </div>
+    
+  <!-- Save Changes Button -->
+  <!-- <div class="flex justify-end mt-8">
+    <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Save Changes</button>
+  </div> -->
+</section>
   
+{% include 'dashboard/main/footer.html' %}
+{% endblock content %}
